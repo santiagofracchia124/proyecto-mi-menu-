@@ -3,28 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Almacén Higuera — Administrador</title>
+<title>hanna accs — administrador</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#232220;
-    --bg-alt:#2b2925;
-    --panel:#2f2d29;
-    --cream:#f2ead8;
-    --mustard:#d9a441;
-    --olive:#6b7a4f;
-    --brick:#a85c4a;
-    --muted:#8a8478;
-    --line: rgba(242,234,216,0.16);
-    --radius: 3px;
+    --bg:#0a0a0d;
+    --surface:#151319;
+    --surface-2:#1b1922;
+    --cream:#f4eee2;
+    --lavender:#b8a4e8;
+    --periwinkle:#94a9ec;
+    --pink:#f3b8d9;
+    --muted:#948f9c;
+    --line: rgba(244,238,226,0.10);
+    --grad: linear-gradient(135deg, var(--lavender) 0%, var(--periwinkle) 48%, var(--pink) 100%);
+    --radius: 18px;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     background:var(--bg);
     color:var(--cream);
-    font-family:'Inter', sans-serif;
+    font-family:'Quicksand', sans-serif;
     min-height:100vh;
     -webkit-font-smoothing:antialiased;
   }
@@ -34,53 +35,54 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:18px 22px;
+    padding:16px 24px;
     border-bottom:1px solid var(--line);
     position:sticky;
     top:0;
-    background:rgba(35,34,32,0.92);
-    backdrop-filter:blur(6px);
+    background:rgba(10,10,13,0.82);
+    backdrop-filter:blur(10px);
     z-index:20;
   }
   .brandmark{
     display:flex;
     align-items:center;
-    gap:10px;
-    font-family:'Fraunces', serif;
+    gap:9px;
+    font-family:'Fredoka', sans-serif;
     font-weight:600;
     font-size:1.05rem;
-    letter-spacing:0.02em;
   }
-  .brandmark .dot{
-    width:8px;height:8px;border-radius:50%;
-    background:var(--mustard);
+  .brandmark .moon{
+    width:16px;height:16px;
+    border-radius:50%;
+    background:var(--grad);
     flex-shrink:0;
   }
   .tabbtn{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
+    font-family:'Quicksand', sans-serif;
+    font-weight:700;
+    font-size:0.78rem;
     background:transparent;
     border:1px solid var(--line);
     color:var(--muted);
-    padding:8px 14px;
-    border-radius:var(--radius);
+    padding:8px 16px;
+    border-radius:20px;
     cursor:pointer;
+    text-decoration:none;
+    display:inline-block;
     transition:border-color .15s ease, color .15s ease;
   }
   .tabbtn:hover, .tabbtn:focus-visible{
-    border-color:var(--mustard);
+    border-color:var(--lavender);
     color:var(--cream);
     outline:none;
   }
  
   .empty-state{
     text-align:center;
-    padding:60px 20px;
+    padding:70px 20px;
     color:var(--muted);
-    font-family:'Fraunces', serif;
-    font-style:italic;
+    font-family:'Fredoka', sans-serif;
+    font-weight:500;
   }
  
   .admin-wrap{max-width:640px;margin:0 auto;padding:40px 22px 100px;}
@@ -88,26 +90,29 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:30px;
+    margin-bottom:26px;
+    gap:12px;
+    flex-wrap:wrap;
   }
   .admin-head h1{
-    font-family:'Fraunces', serif;
+    font-family:'Fredoka', sans-serif;
     font-weight:600;
-    font-size:1.6rem;
+    font-size:1.5rem;
     margin:0;
   }
   .card{
-    background:var(--panel);
+    background:var(--surface);
     border:1px solid var(--line);
-    border-radius:6px;
+    border-radius:var(--radius);
     padding:22px;
     margin-bottom:20px;
   }
   label{
     display:block;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.68rem;
-    letter-spacing:0.06em;
+    font-family:'Quicksand', sans-serif;
+    font-weight:700;
+    font-size:0.72rem;
+    letter-spacing:0.03em;
     text-transform:uppercase;
     color:var(--muted);
     margin-bottom:6px;
@@ -116,58 +121,71 @@
   label:first-of-type{margin-top:0;}
   input[type=text], input[type=number], input[type=password], textarea{
     width:100%;
-    background:var(--bg);
+    background:var(--surface-2);
     border:1px solid var(--line);
     color:var(--cream);
-    padding:10px 12px;
-    border-radius:var(--radius);
-    font-family:'Inter', sans-serif;
-    font-size:0.9rem;
+    padding:11px 13px;
+    border-radius:12px;
+    font-family:'Quicksand', sans-serif;
+    font-weight:500;
+    font-size:0.92rem;
   }
   input:focus, textarea:focus{
     outline:none;
-    border-color:var(--mustard);
+    border-color:var(--lavender);
   }
   textarea{resize:vertical;min-height:60px;}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .checkrow{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin-top:16px;
+  }
+  .checkrow input[type=checkbox]{
+    width:18px;height:18px;
+    accent-color:var(--lavender);
+  }
+  .checkrow label{margin:0;text-transform:none;font-weight:600;font-size:0.85rem;color:var(--cream);}
   .filelabel{
     display:inline-block;
     margin-top:8px;
-    padding:8px 14px;
+    padding:9px 16px;
     border:1px dashed var(--line);
-    border-radius:var(--radius);
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
+    border-radius:20px;
+    font-family:'Quicksand', sans-serif;
+    font-weight:600;
+    font-size:0.78rem;
     color:var(--muted);
     cursor:pointer;
     text-align:center;
   }
-  .filelabel:hover{border-color:var(--mustard);color:var(--cream);}
+  .filelabel:hover{border-color:var(--lavender);color:var(--cream);}
   input[type=file]{display:none;}
   .img-preview{
     margin-top:10px;
     width:90px;height:90px;
     object-fit:cover;
-    border-radius:var(--radius);
+    border-radius:14px;
     border:1px solid var(--line);
     display:none;
   }
   .btn{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.75rem;
-    letter-spacing:0.05em;
-    text-transform:uppercase;
-    padding:11px 20px;
-    border-radius:var(--radius);
+    font-family:'Quicksand', sans-serif;
+    font-weight:700;
+    font-size:0.82rem;
+    padding:11px 22px;
+    border-radius:24px;
     border:1px solid transparent;
     cursor:pointer;
-    transition:opacity .15s ease;
+    transition:opacity .15s ease, transform .1s ease;
   }
-  .btn:hover{opacity:0.88;}
-  .btn-primary{background:var(--mustard);color:#232220;font-weight:500;}
+  .btn:hover{opacity:0.9;}
+  .btn:active{transform:scale(0.98);}
+  .btn-primary{background:var(--grad);color:#1a1820;}
   .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--cream);}
-  .btn-danger{background:transparent;border:1px solid var(--brick);color:var(--brick);}
-  .btn-row{display:flex;gap:10px;margin-top:20px;}
+  .btn-danger{background:transparent;border:1px solid var(--pink);color:var(--pink);}
+  .btn-row{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;}
  
   .admin-item{
     display:flex;
@@ -177,45 +195,52 @@
     border-bottom:1px solid var(--line);
   }
   .admin-item:last-child{border-bottom:none;}
-  .admin-item img{
-    width:46px;height:46px;object-fit:cover;border-radius:var(--radius);
+  .admin-item img, .admin-item .noimg{
+    width:46px;height:46px;object-fit:cover;border-radius:10px;
     border:1px solid var(--line);
     flex-shrink:0;
-    background:var(--bg);
+    background:var(--surface-2);
   }
   .admin-item .meta{flex:1;min-width:0;}
-  .admin-item .meta .name{font-family:'Fraunces', serif;font-weight:500;font-size:0.95rem;}
-  .admin-item .meta .sub{font-family:'IBM Plex Mono', monospace;font-size:0.72rem;color:var(--muted);margin-top:2px;}
+  .admin-item .meta .name{font-family:'Fredoka', sans-serif;font-weight:600;font-size:0.95rem;}
+  .admin-item .meta .sub{font-family:'Quicksand', sans-serif;font-weight:600;font-size:0.75rem;color:var(--muted);margin-top:2px;}
+  .admin-item .meta .sub .out{color:var(--pink);}
   .admin-item .actions{display:flex;gap:6px;flex-shrink:0;}
   .iconbtn{
     background:transparent;border:1px solid var(--line);color:var(--muted);
-    width:30px;height:30px;border-radius:var(--radius);cursor:pointer;
+    width:32px;height:32px;border-radius:10px;cursor:pointer;
     display:flex;align-items:center;justify-content:center;font-size:0.85rem;
   }
-  .iconbtn:hover{border-color:var(--mustard);color:var(--cream);}
+  .iconbtn:hover{border-color:var(--lavender);color:var(--cream);}
  
   .login-box{
-    max-width:340px;margin:90px auto;
+    max-width:340px;margin:100px auto 0;
     text-align:center;
   }
-  .login-box h1{
-    font-family:'Fraunces', serif;font-weight:600;font-size:1.6rem;margin-bottom:6px;
+  .login-avatar{
+    width:64px;height:64px;
+    border-radius:50%;
+    background:var(--grad);
+    margin:0 auto 18px;
   }
-  .login-box p{color:var(--muted);font-size:0.85rem;margin-bottom:24px;}
-  .err{color:var(--brick);font-size:0.78rem;font-family:'IBM Plex Mono',monospace;margin-top:10px;min-height:16px;}
+  .login-box h1{
+    font-family:'Fredoka', sans-serif;font-weight:600;font-size:1.5rem;margin-bottom:6px;
+  }
+  .login-box p{color:var(--muted);font-size:0.85rem;margin-bottom:22px;font-weight:500;}
+  .err{color:var(--pink);font-size:0.78rem;font-weight:600;margin-top:10px;min-height:16px;}
  
   .toast{
     position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
-    background:var(--cream);color:#232220;
-    font-family:'IBM Plex Mono', monospace;font-size:0.78rem;
-    padding:11px 20px;border-radius:var(--radius);
+    background:var(--cream);color:#1a1820;
+    font-family:'Quicksand', sans-serif;font-weight:700;font-size:0.8rem;
+    padding:11px 22px;border-radius:24px;
     opacity:0;pointer-events:none;
     transition:opacity .2s ease, transform .2s ease;
     z-index:50;
   }
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
  
-  ::selection{background:var(--mustard);color:#232220;}
+  ::selection{background:var(--lavender);color:#1a1820;}
 </style>
 </head>
 <body>
@@ -227,14 +252,16 @@
 (function(){
   const DEFAULT_DATA = {
     items: [
-      {id:"i1", category:"Empanadas", name:"Carne cortada a cuchillo", price:1800, description:"Cebolla, pimiento, huevo y comino.", image:""},
-      {id:"i2", category:"Empanadas", name:"Humita", price:1600, description:"", image:""},
-      {id:"i3", category:"Sándwiches", name:"Miga jamón y queso", price:2400, description:"Pan de miga tostado.", image:""},
-      {id:"i4", category:"Café y algo dulce", name:"Café con leche + medialuna", price:2200, description:"", image:""}
+      {id:"i1", category:"Anillos", name:"Anillo luna acero quirúrgico", price:3500, description:"Ajustable, no se pone verde.", image:"", available:true},
+      {id:"i2", category:"Anillos", name:"Trío minimalista", price:4200, description:"Set de 3 anillos finos combinables.", image:"", available:true},
+      {id:"i3", category:"Pulseras", name:"Pulsera dijes corazón", price:3800, description:"", image:"", available:true},
+      {id:"i4", category:"Pulseras", name:"Pulsera cadena rolo", price:4600, description:"Acero dorado, resistente al agua.", image:"", available:false},
+      {id:"i5", category:"Aros", name:"Mini criollas doradas", price:3200, description:"", image:"", available:true},
+      {id:"i6", category:"Collares", name:"Gargantilla perlas", price:4500, description:"Perlas de río, cierre regulable.", image:"", available:true}
     ]
   };
-  const ADMIN_PASSWORD = "kiara";
-  const STORAGE_KEY = "menu:data";
+  const ADMIN_PASSWORD = "kiara2005";
+  const STORAGE_KEY = "catalogo:data";
  
   let state = { view:"login", data:null, loading:true, authed:false, editingId:null };
  
@@ -262,7 +289,7 @@
     try{
       const result = await window.storage.set(STORAGE_KEY, JSON.stringify(state.data), true);
       if(!result) throw new Error("sin respuesta");
-      showToast("Guardado");
+      showToast("Guardado ✷");
     }catch(e){
       showToast("No se pudo guardar. Probá de nuevo.");
       console.error("storage error", e);
@@ -296,12 +323,13 @@
   function renderLogin(){
     return `
       <div class="topbar">
-        <div class="brandmark"><span class="dot"></span> Hanna Accs — Admin</div>
-        <a class="tabbtn" href="menu.html" style="text-decoration:none;display:inline-block;">Ver carta</a>
+        <div class="brandmark"><span class="moon"></span> hanna accs — admin</div>
+        <a class="tabbtn" href="menu.html">Ver catálogo</a>
       </div>
       <div class="login-box">
+        <div class="login-avatar"></div>
         <h1>Panel de edición</h1>
-        <p>Ingresá la contraseña para editar la carta.</p>
+        <p>Ingresá la contraseña para editar el catálogo.</p>
         <input type="password" id="pw-input" placeholder="Contraseña" autofocus>
         <div class="btn-row" style="justify-content:center;">
           <button class="btn btn-primary" data-action="try-login">Entrar</button>
@@ -315,8 +343,8 @@
     const items = state.data.items;
     return `
       <div class="topbar">
-        <div class="brandmark"><span class="dot"></span> Hanna Accs — Admin</div>
-        <a class="tabbtn" href="menu.html" style="text-decoration:none;display:inline-block;">Ver accesorios</a>
+        <div class="brandmark"><span class="moon"></span> hanna accs — admin</div>
+        <a class="tabbtn" href="menu.html">Ver catálogo público</a>
       </div>
       <div class="admin-wrap">
         <div class="admin-head">
@@ -328,10 +356,10 @@
             ? `<div class="empty-state" style="padding:20px;">No hay productos todavía. Agregá el primero.</div>`
             : items.map(it => `
               <div class="admin-item">
-                ${it.image ? `<img src="${escapeHtml(it.image)}" alt="">` : `<div style="width:46px;height:46px;background:var(--bg);border-radius:3px;border:1px solid var(--line);flex-shrink:0;"></div>`}
+                ${it.image ? `<img src="${escapeHtml(it.image)}" alt="">` : `<div class="noimg"></div>`}
                 <div class="meta">
                   <div class="name">${escapeHtml(it.name)}</div>
-                  <div class="sub">${escapeHtml(it.category || "Otros")} · ${fmtPrice(it.price)}</div>
+                  <div class="sub">${escapeHtml(it.category || "Otros")} · ${fmtPrice(it.price)}${it.available === false ? ` · <span class="out">sin stock</span>` : ``}</div>
                 </div>
                 <div class="actions">
                   <button class="iconbtn" title="Editar" data-action="edit-item" data-id="${it.id}">✎</button>
@@ -347,9 +375,10 @@
   function renderForm(){
     const editing = state.editingId ? state.data.items.find(i=>i.id===state.editingId) : null;
     const cats = [...new Set(state.data.items.map(i=>i.category).filter(Boolean))];
+    const isAvailable = editing ? editing.available !== false : true;
     return `
       <div class="topbar">
-        <div class="brandmark"><span class="dot"></span> Hanna Accs — Admin</div>
+        <div class="brandmark"><span class="moon"></span> hanna accs — admin</div>
         <button class="tabbtn" data-action="go-admin">Volver</button>
       </div>
       <div class="admin-wrap">
@@ -358,7 +387,7 @@
         </div>
         <div class="card">
           <label>Nombre del producto</label>
-          <input type="text" id="f-name" value="${escapeHtml(editing?.name || "")}" placeholder="Ej: anillo de plata con piedra">
+          <input type="text" id="f-name" value="${escapeHtml(editing?.name || "")}" placeholder="Ej: Anillo luna">
  
           <div class="row2">
             <div>
@@ -367,7 +396,7 @@
             </div>
             <div>
               <label>Categoría</label>
-              <input type="text" id="f-category" list="cat-list" value="${escapeHtml(editing?.category || "")}" placeholder="Ej: Empanadas">
+              <input type="text" id="f-category" list="cat-list" value="${escapeHtml(editing?.category || "")}" placeholder="Ej: Anillos">
               <datalist id="cat-list">
                 ${cats.map(c=>`<option value="${escapeHtml(c)}">`).join("")}
               </datalist>
@@ -375,13 +404,18 @@
           </div>
  
           <label>Descripción <span style="text-transform:none;color:var(--muted);">(opcional)</span></label>
-          <textarea id="f-desc" placeholder="Descripción del producto…">${escapeHtml(editing?.description || "")}</textarea>
+          <textarea id="f-desc" placeholder="Material, medidas, detalles...">${escapeHtml(editing?.description || "")}</textarea>
  
           <label>Foto <span style="text-transform:none;color:var(--muted);">(opcional)</span></label>
           <input type="text" id="f-image-url" value="${escapeHtml(editing?.image || "")}" placeholder="Pegar una URL de imagen…">
           <label class="filelabel" for="f-image-file">o subir una foto desde el dispositivo</label>
           <input type="file" id="f-image-file" accept="image/*">
           <img class="img-preview" id="f-image-preview" src="${editing?.image ? escapeHtml(editing.image) : ""}" style="${editing?.image ? 'display:block;' : ''}">
+ 
+          <div class="checkrow">
+            <input type="checkbox" id="f-available" ${isAvailable ? "checked" : ""}>
+            <label for="f-available">Hay stock disponible</label>
+          </div>
  
           <div class="btn-row">
             <button class="btn btn-primary" data-action="save-item">${editing ? "Guardar cambios" : "Agregar producto"}</button>
@@ -483,15 +517,16 @@
     const category = document.getElementById("f-category").value.trim();
     const desc = document.getElementById("f-desc").value.trim();
     const image = document.getElementById("f-image-url").value.trim();
+    const available = document.getElementById("f-available").checked;
  
     if(!name){ showToast("Poné un nombre para el producto."); return; }
     if(price === "" || isNaN(Number(price)) || Number(price) < 0){ showToast("Poné un precio válido."); return; }
  
     if(state.editingId){
       const it = state.data.items.find(i=>i.id===state.editingId);
-      Object.assign(it, {name, price:Number(price), category, description:desc, image});
+      Object.assign(it, {name, price:Number(price), category, description:desc, image, available});
     } else {
-      state.data.items.push({id:uid(), name, price:Number(price), category, description:desc, image});
+      state.data.items.push({id:uid(), name, price:Number(price), category, description:desc, image, available});
     }
     state.editingId = null;
     state.view = "admin";
@@ -500,7 +535,7 @@
   }
  
   function deleteItem(id){
-    if(!confirm("¿Eliminar este producto?")) return;
+    if(!confirm("¿Eliminar este producto del catálogo?")) return;
     state.data.items = state.data.items.filter(i=>i.id!==id);
     state.editingId = null;
     state.view = "admin";
