@@ -296,7 +296,7 @@
   function renderLogin(){
     return `
       <div class="topbar">
-        <div class="brandmark"><span class="dot"></span> Almacén Higuera — Admin</div>
+        <div class="brandmark"><span class="dot"></span> Hanna Accs — Admin</div>
         <a class="tabbtn" href="menu.html" style="text-decoration:none;display:inline-block;">Ver carta</a>
       </div>
       <div class="login-box">
@@ -315,17 +315,17 @@
     const items = state.data.items;
     return `
       <div class="topbar">
-        <div class="brandmark"><span class="dot"></span> Almacén Higuera — Admin</div>
-        <a class="tabbtn" href="menu.html" style="text-decoration:none;display:inline-block;">Ver carta pública</a>
+        <div class="brandmark"><span class="dot"></span> Hanna Accs — Admin</div>
+        <a class="tabbtn" href="menu.html" style="text-decoration:none;display:inline-block;">Ver accesorios</a>
       </div>
       <div class="admin-wrap">
         <div class="admin-head">
-          <h1>Platos (${items.length})</h1>
-          <button class="btn btn-primary" data-action="new-item">+ Agregar plato</button>
+          <h1>Productos (${items.length})</h1>
+          <button class="btn btn-primary" data-action="new-item">+ Agregar producto</button>
         </div>
         <div class="card">
           ${items.length === 0
-            ? `<div class="empty-state" style="padding:20px;">No hay platos todavía. Agregá el primero.</div>`
+            ? `<div class="empty-state" style="padding:20px;">No hay productos todavía. Agregá el primero.</div>`
             : items.map(it => `
               <div class="admin-item">
                 ${it.image ? `<img src="${escapeHtml(it.image)}" alt="">` : `<div style="width:46px;height:46px;background:var(--bg);border-radius:3px;border:1px solid var(--line);flex-shrink:0;"></div>`}
@@ -349,16 +349,16 @@
     const cats = [...new Set(state.data.items.map(i=>i.category).filter(Boolean))];
     return `
       <div class="topbar">
-        <div class="brandmark"><span class="dot"></span> Almacén Higuera — Admin</div>
+        <div class="brandmark"><span class="dot"></span> Hanna Accs — Admin</div>
         <button class="tabbtn" data-action="go-admin">Volver</button>
       </div>
       <div class="admin-wrap">
         <div class="admin-head">
-          <h1>${editing ? "Editar plato" : "Nuevo plato"}</h1>
+          <h1>${editing ? "Editar producto" : "Nuevo producto"}</h1>
         </div>
         <div class="card">
-          <label>Nombre del plato</label>
-          <input type="text" id="f-name" value="${escapeHtml(editing?.name || "")}" placeholder="Ej: Tarta de acelga">
+          <label>Nombre del producto</label>
+          <input type="text" id="f-name" value="${escapeHtml(editing?.name || "")}" placeholder="Ej: anillo de plata con piedra">
  
           <div class="row2">
             <div>
@@ -375,7 +375,7 @@
           </div>
  
           <label>Descripción <span style="text-transform:none;color:var(--muted);">(opcional)</span></label>
-          <textarea id="f-desc" placeholder="Ingredientes, aclaraciones, etc.">${escapeHtml(editing?.description || "")}</textarea>
+          <textarea id="f-desc" placeholder="Descripción del producto…">${escapeHtml(editing?.description || "")}</textarea>
  
           <label>Foto <span style="text-transform:none;color:var(--muted);">(opcional)</span></label>
           <input type="text" id="f-image-url" value="${escapeHtml(editing?.image || "")}" placeholder="Pegar una URL de imagen…">
@@ -384,7 +384,7 @@
           <img class="img-preview" id="f-image-preview" src="${editing?.image ? escapeHtml(editing.image) : ""}" style="${editing?.image ? 'display:block;' : ''}">
  
           <div class="btn-row">
-            <button class="btn btn-primary" data-action="save-item">${editing ? "Guardar cambios" : "Agregar plato"}</button>
+            <button class="btn btn-primary" data-action="save-item">${editing ? "Guardar cambios" : "Agregar producto"}</button>
             <button class="btn btn-ghost" data-action="go-admin">Cancelar</button>
             ${editing ? `<button class="btn btn-danger" data-action="delete-item" data-id="${editing.id}" style="margin-left:auto;">Eliminar</button>` : ``}
           </div>
@@ -484,7 +484,7 @@
     const desc = document.getElementById("f-desc").value.trim();
     const image = document.getElementById("f-image-url").value.trim();
  
-    if(!name){ showToast("Poné un nombre para el plato."); return; }
+    if(!name){ showToast("Poné un nombre para el producto."); return; }
     if(price === "" || isNaN(Number(price)) || Number(price) < 0){ showToast("Poné un precio válido."); return; }
  
     if(state.editingId){
@@ -500,7 +500,7 @@
   }
  
   function deleteItem(id){
-    if(!confirm("¿Eliminar este plato de la carta?")) return;
+    if(!confirm("¿Eliminar este producto?")) return;
     state.data.items = state.data.items.filter(i=>i.id!==id);
     state.editingId = null;
     state.view = "admin";
