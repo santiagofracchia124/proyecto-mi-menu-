@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hanna accs — catálogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/estilos.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-logo">hanna<span>accs</span></div>
+</nav>
+
+<header class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">✷ Catálogo</div>
+    <h1 class="hero-title">completando tu look</h1>
+    <p class="hero-desc">accesorios y más 🤍 · Guernica, Bs As</p>
+    <a href="#catalogo" class="btn-hero-agregar">Ver catálogo ↓</a>
+  </div>
+</header>
+
+<div class="menu-content" id="catalogo">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-title">Categorías</div>
+    <div id="sidebar-nav"><div class="loading">Cargando...</div></div>
+  </aside>
+  <main class="menu-main" id="menu-main">
+    <div class="section-header">
+      <span class="section-title">Catálogo</span>
+      <span class="section-count" id="section-count"></span>
+    </div>
+    <div class="items-grid" id="items-grid"></div>
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-brand">hanna<span>accs</span></div>
+      <p class="footer-tagline">completando tu look ✷ accesorios y más 🤍</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-title">Contactanos</div>
+      <span class="footer-mail">hola@hannaaccs.com</span>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/hanna.aaccs/" target="_blank" class="btn-social">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-title">Ubicación</div>
+      <span class="footer-mail">Guernica, Buenos Aires</span>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 hanna accs · Todos los derechos reservados</div>
+</footer>
+
+<script id="menu-data" type="application/json">{{ menu | tojson }}</script>
+<script src="/static/js/menu.js"></script>
+</body>
+</html>
